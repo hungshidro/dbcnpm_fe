@@ -1,0 +1,9 @@
+  <a href="/product/{{product.id}}">
+    <img src="{{product.image_path}}" alt="" />
+    <h4 class="mt-3">{{product.name}}</h4>
+    <p *ngIf="!product.discount_price">${{product.price}}</p>
+    <p *ngIf="product.discount_price">
+      <span style="color: #aaa; text-decoration: line-through; margin-right : 12px;">${{product.price}}</span>
+      <span>${{product.discount_price}}</span>
+    </p>
+  </a>

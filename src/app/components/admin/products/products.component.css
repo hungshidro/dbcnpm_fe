@@ -1,0 +1,103 @@
+.page{
+  padding: 100px 0 0 0;
+  max-width: 1186px;
+  margin: 0 auto;
+}
+
+.page h2{
+  display: inline-block;
+}
+
+.page .button{
+  display: inline-block;
+  float: right;
+
+}
+
+.page .button a{
+  color: #fff;
+  background: #0A2558;
+  padding: 8px 12px;
+  font-size: 15px;
+  font-weight: 400;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+table{
+  margin-top: 50px;
+  table-layout: fixed;
+}
+
+table th,
+table td{
+  text-align: left;
+}
+table.layout{
+  width: 100%;
+  border-collapse: collapse;
+}
+table.display{
+  margin: 16px 0;
+}
+table.display th,
+table.display td{
+  border: 1px solid #ccc;
+  padding: 8px 16px;
+  height: 80px;
+  overflow: hidden;
+}
+
+table .name{
+  width: 330px;
+}
+
+table .id{
+  width: 60px;
+}
+
+table .description,
+table td{
+  width: 250px;
+}
+
+table .price,
+table .action{
+  width: 150px;
+}
+
+table.display th{ background: #0A2558; }
+table.display td{ background: #fff; }
+
+table.responsive-table{
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+}
+
+table td a{
+  padding: 0 8px;
+}
+
+table td .img-product{
+  width: 60px;
+  height: 80px;
+  object-fit: cover;
+}
+
+table tr .row-product {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.row-product div{
+  margin: auto;
+}
+
+.row-product div span{
+  text-align: center;
+}
+
+.home-section .button {
+  padding: 10px;
+}

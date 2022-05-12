@@ -1,0 +1,52 @@
+  <div class="login-form">
+  <div class="login-container">
+    <div class="forms">
+      <div class="form login">
+        <span class="title">Login</span>
+        <div class="alert-message" [hidden]="!error">
+          <i class='bx bx-error' ></i>
+          {{error}}
+        </div>
+        <form action="#" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="input-field">
+            <input type="text" placeholder="Enter your username" formControlName="username">
+            <i class="uil uil-envelope icon"></i>
+          </div>
+          <div class="alert-message" *ngif="!username.valid && (username.dirty || username.touched)">
+            Minimum six characters
+          </div>
+          <div class="input-field">
+            <input type="password" class="password" placeholder="Enter your password" formControlName="password">
+            <i class="uil uil-lock icon"></i>
+            <i class="uil uil-eye-slash showHidePw"></i>
+          </div>
+
+          <div class="checkbox-text">
+            <div class="checkbox-content">
+              <input type="checkbox" id="logCheck" formControlName="rememberMe">
+              <label for="logCheck" class="text">Remember me</label>
+            </div>
+
+            <a href="#" class="text">Forgot password?</a>
+          </div>
+
+          <div class="input-field button">
+            <input type="submit" value="Login Now" [disabled]="!loginForm.valid" class="submit-button">
+          </div>
+
+<!--          <pre>{{loginForm.value|json}}</pre>-->
+        </form>
+
+        <div class="login-signup">
+          <span class="text">Not a member?
+            <a routerLink="/admin/signup" class="text signup-link">Signup now</a>
+          </span>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+

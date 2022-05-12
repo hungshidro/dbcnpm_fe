@@ -1,0 +1,57 @@
+<script src="../admin-login/admin-login.component.spec.ts"></script>
+<app-sidebar></app-sidebar>
+<section class="home-section">
+  <nav>
+    <div class="sidebar-button" >
+      <i class='bx bx-menu sidebarBtn'></i>
+      <span class="dashboard">Products</span>
+    </div>
+    <app-search-product (productSearched)="onSearchProductClick($event)"  ></app-search-product>
+    <div class="profile-details">
+      <img src="assets/images/img.png" alt="">
+      <span class="admin_name">Admin</span>
+      <i class='bx bx-chevron-down'></i>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="page">
+      <h2>All Products</h2>
+      <div class="button">
+        <a routerLink="/admin/product/create">Create New Product</a>
+      </div>
+    <div style="overflow-x: auto">
+      <table class="layout display responsive-table">
+        <thead>
+        <tr>
+          <th class="id text-light">Id</th>
+          <th class="name text-light">Name</th>
+          <th class="description text-light">Description</th>
+          <th class="price text-light">Price</th>
+          <th class="action text-light">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let product of products">
+          <td class="">{{product.id}}</td>
+          <td>
+            <div class="row-product">
+              <img src="{{product.image_path}}" alt="" class="img-product">
+              <div><span>{{product.name}}</span></div>
+            </div>
+          </td>
+          <td class="">{{product.description}}</td>
+          <td>${{product.price}}</td>
+          <td class="actions">
+            <a routerLink="/admin/product/edit/{{product.id}}" class="edit-item" title="Edit">Edit</a>
+            <a (click)="onDelete(product.id)" class="remove-item" title="Remove">Remove</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+
+  </div>
+
+</section>

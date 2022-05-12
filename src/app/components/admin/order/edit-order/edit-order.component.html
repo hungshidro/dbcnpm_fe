@@ -1,0 +1,229 @@
+<app-sidebar></app-sidebar>
+<section class="home-section">
+  <nav>
+    <div class="sidebar-button" >
+      <i class='bx bx-menu sidebarBtn'></i>
+      <span class="dashboard">Create Order</span>
+    </div>
+    <app-search-product (productSearched)="onSearchProductClick($event)"  ></app-search-product>
+    <div class="profile-details">
+      <img src="../../../../../assets/images/img.png" alt="">
+      <span class="admin_name">Admin</span>
+      <i class='bx bx-chevron-down'></i>
+    </div>
+  </nav>
+  <div class="home-content">
+    <div class="sales-boxes">
+      <div class="recent-sales box">
+        <div class="title">Order Item</div>
+        <div class="item" *ngFor="let product of orderList">
+          <div class="buttons">
+            <span class="delete-btn" (click)="onDeleteProduct(product.product.id)"></span>
+          </div>
+          <div class="description">
+            <span class="text-black">{{product.product.name}}</span>
+
+          </div>
+
+          <div class="quantity">
+            <button class="plus-btn" type="button" name="button" (click)="addQuantity(product.product.id)">
+              <img src="https://designmodo.com/demo/shopping-cart/plus.svg" alt="" />
+            </button>
+            <input type="text" name="name" value="{{product.quantity}}">
+            <button class="minus-btn" type="button" name="button" (click)="subQuantity(product.product.id)">
+              <img src="https://designmodo.com/demo/shopping-cart/minus.svg" alt="" />
+            </button>
+          </div>
+
+          <div class="total-price">${{product.quantity * product.price}}</div>
+        </div>
+
+      </div>
+      <div class="top-sales box">
+        <div class="title">Customer Information</div>
+        <div class="find-cus">
+          <div class="search-box">
+            <input type="text" placeholder="Search for customer"
+                   (keyup)="onSearchCustomer($event)">
+            <i class='bx bx-search'></i>
+            <div class="search-data-customer">
+              <div class="search-customer">
+                <span  *ngFor="let customer of searchCustomer" (click)="onSearchCustomerClick(customer)">{{customer.first_name}} {{customer.last_name}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="button" (click)="openModal()">
+            <a>+</a>
+          </div>
+
+          <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+              <span class="close" (click)="closeModal()">&times;</span>
+              <form [formGroup]="createCustomerForm" (ngSubmit)="onSubmit()" >
+                <div class="row justify-content-between">
+                  <div class="col">
+                    <label for="exampleInputUsername1" class="form-label" >First Name</label>
+                    <input type="text" class="form-control" id="exampleInputUsername1" aria-describedby="emailHelp" formControlName="first_name">
+                  </div>
+                  <div class="col">
+                    <label for="exampleInputPassword1" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="exampleInputPassword1" formControlName="last_name">
+                  </div>
+                </div>
+                <div class="mt-3 mb-3">
+                  <label for="exampleInputTel1" class="form-label">Phone Number</label>
+                  <input type="text" class="form-control" id="exampleInputTel1" aria-describedby="emailHelp" formControlName="tel">
+                </div>
+                <div class="row justify-content-between mb-3">
+                  <div class="col">
+                    <label for="exampleInputHome1" class="form-label">Home No</label>
+                    <input type="text" class="form-control"
+                           id="exampleInputHome1"
+                           aria-describedby="emailHelp"
+                           formControlName="homeNo">
+                  </div>
+                  <div class="col">
+                    <label for="exampleInputStreet1" class="form-label">Street</label>
+                    <input type="text"
+                           class="form-control"
+                           id="exampleInputStreet1"
+                           formControlName="street">
+                  </div>
+                </div>
+                <div class="row justify-content-between">
+                  <div class="col">
+                    <label for="exampleInputCity1" class="form-label">City</label>
+                    <input type="text"
+                           class="form-control"
+                           id="exampleInputCity1"
+                           aria-describedby="emailHelp"
+                           formControlName="city">
+                  </div>
+                  <div class="col">
+                    <label for="exampleInpuDistrict1" class="form-label">District</label>
+                    <input type="text"
+                           class="form-control"
+                           id="exampleInpuDistrict1"
+                           formControlName="district">
+                  </div>
+                </div>
+
+
+                <div class="mt-3 mb-3">
+                  <label >Gender</label>
+                </div>
+
+                <div class="row justify-content-between">
+
+                  <div class="form-check col-2 mx-3">
+                    <input class="form-check-input"
+                           type="radio"
+                           id="flexRadioDefault1"
+                           value="Male"
+                           formControlName="gender">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                      Male
+                    </label>
+                  </div>
+                  <div class="form-check col-2">
+                    <input class="form-check-input"
+                           type="radio"
+                           id="flexRadioDefault2"  formControlName="gender"
+                           value="Female" checked>
+                    <label class="form-check-label" for="flexRadioDefault2">
+                      Female
+                    </label>
+                  </div>
+                </div>
+                <div class="mt-3 mb-3">
+                  <label for="exampleInputDob" class="form-label">Date Of Birth</label>
+                  <input type="date" class="form-control" id="exampleInputDob" aria-describedby="emailHelp" formControlName="dob">
+                </div>
+                <button type="submit" class="btn btn-submit">Submit</button>
+              </form>
+            </div>
+
+          </div>
+        </div>
+        <ul class="top-sales-details">
+          <li>
+            <a >
+              <span class="customer-info">FullName</span>
+            </a>
+            <input type="text" value="{{name}}">
+          </li>
+          <li>
+            <a >
+              <span class="customer-info">Address </span>
+            </a>
+            <input type="text" value="{{address}}">
+          </li>
+          <li>
+            <a >
+              <span class="customer-info">Phone Number</span>
+            </a>
+            <input type="text" value="{{tel}}">
+          </li>
+        </ul>
+        <hr>
+        <ul class="top-sales-details" style="height: 200px; overflow: auto">
+          <li *ngFor="let product of orderList">
+            <a href="#" class="item-order">
+              <span class="product">{{product.product.name}}</span>
+              <small>Quantity: {{product.quantity}}</small>
+            </a>
+            <span class="price">${{product.price*product.quantity}}</span>
+          </li>
+        </ul>
+        <hr>
+        <ul class="top-sales-details">
+          <li>
+            <a >
+              <span class="ship-service">Shiping Service</span>
+            </a>
+            <select name="" id="deliverySelect" (change)="onChangeDelivery()" >
+              <option *ngFor="let delivery of deliveryServices" value="{{delivery.id}}">{{delivery.name}}</option>
+            </select>
+          </li>
+          <li>
+            <span class="ship">{{deliveryChoosed?.name}}</span>
+            <span class="price">${{deliveryChoosed?.price}}</span>
+          </li>
+        </ul>
+        <hr>
+        <ul class="top-sales-details">
+          <li>
+            <a >
+              <span class="ship-service">Payment Method</span>
+            </a>
+          </li>
+          <li>
+            <div>
+              <input class="payment_input" type="radio" id="cod" name="payment_method" value="COD" >
+              <label for="cod">COD</label>
+            </div>
+            <div>
+              <input class="payment_input" type="radio" id="master_card" name="payment_method" value="Master Card">
+              <label for="master_card">Master Card</label>
+            </div>
+          </li>
+        </ul>
+        <hr>
+        <ul class="top-sales-details">
+          <li>
+            <a href="#">
+              <span class="product">Total</span>
+            </a>
+            <span >${{total}}</span>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div>
+    <button class="btn float-end me-5" (click)="editOrder()">Save Changes</button>
+  </div>
+</section>
+
+

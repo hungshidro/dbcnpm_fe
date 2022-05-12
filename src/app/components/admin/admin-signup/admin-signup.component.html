@@ -1,0 +1,81 @@
+<div class="login-form">
+  <div class="login-container">
+    <div class="forms">
+      <div class="form login">
+        <span class="title">Register</span>
+        <div class="alert-message" [hidden]="!error" *ngIf="error.first_name && error.first_name[0]">
+          <i class='bx bx-error' ></i>
+          {{error.first_name[0]}}
+        </div>
+        <div class="alert-message" [hidden]="!error" *ngIf="error.last_name">
+          <i class='bx bx-error' ></i>
+          {{error.last_name[0]}}
+        </div>
+        <div class="alert-message" [hidden]="!error" *ngIf="error.email">
+          <i class='bx bx-error' ></i>
+          {{error.email[0]}}
+        </div>
+        <div class="alert-message" [hidden]="!error" *ngIf="error.username">
+          <i class='bx bx-error' ></i>
+          {{error.username[0]}}
+        </div>
+        <div class="alert-message" [hidden]="!error" *ngIf="error.password">
+          <i class='bx bx-error' ></i>
+          {{error.password[0]}}
+        </div>
+        <form action="#" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="input-field col-2 signup-field">
+              <input type="text" placeholder="First Name" required formControlName="first_name">
+              <i class="uil uil-user"></i>
+
+            </div>
+            <div class="input-field col-2 signup-field">
+              <input type="text" placeholder="Last Name" required formControlName="last_name">
+              <i class="uil uil-user"></i>
+
+            </div>
+          </div>
+          <div class="input-field">
+            <input type="text" placeholder="Enter your email" required formControlName="email">
+            <i class="uil uil-envelope icon"></i>
+
+          </div>
+          <div class="input-field">
+            <input type="text" placeholder="Enter your username"  formControlName="username">
+            <i class="uil uil-user"></i>
+
+          </div>
+          <div class="alert-message" *ngif="!signUpForm.get('username').valid && (username.dirty || username.touched)">
+            Minimum six characters
+          </div>
+          <div class="input-field">
+            <input type="password" class="password" placeholder="Create a password"  formControlName="password">
+            <i class="uil uil-lock icon"></i>
+
+          </div>
+          <div class="input-field">
+            <input type="password" class="password" placeholder="Confirm a password" required formControlName="password_confirmation">
+            <i class="uil uil-lock icon"></i>
+          </div>
+
+
+          <div class="input-field button">
+            <input type="submit" value="Register" [disabled]="!signUpForm.valid" class="submit-button">          </div>
+
+          <!--          <pre>{{loginForm.value|json}}</pre>-->
+        </form>
+
+        <div class="login-signup">
+          <span class="text">Have an account?
+            <a routerLink="/admin/login" class="text signup-link">Sign In now</a>
+          </span>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+

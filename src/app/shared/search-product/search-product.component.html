@@ -1,0 +1,15 @@
+<div class="search-field">
+  <input id="product-search-bar"
+         type="text"
+         placeholder="Search for product..."
+         name="item"
+         (keyup)="onSearchProduct($event)">
+  <i class='bx bx-search'></i>
+  <div class="search-data">
+    <div class="search-product"
+         *ngFor="let product of searchProducts"
+         (click)="onSearchProductClick(product)">
+      <span>{{product?.name}}</span>
+    </div>
+  </div>
+</div>

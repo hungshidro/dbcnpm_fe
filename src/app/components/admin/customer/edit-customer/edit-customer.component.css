@@ -1,0 +1,58 @@
+.home-content .title{
+  font-size: 32px;
+  font-weight: 500;
+  padding: 30px;
+}
+.btn-square{
+  padding: 8px 13px;
+  border-radius: 4px;
+  width: 42px;
+  margin-right: 14px;
+}
+
+.home-content form .address{
+  position: relative;
+  width: 90%;
+}
+.home-content form .btn-square{
+  position: absolute;
+  top: 0;
+  right: -90px;
+}
+
+.address .address-info{
+  position: relative;
+}
+
+.address .address-info .edit-address{
+  position: absolute;
+  right: 30px;
+  top: 0;
+  font-size: 30px;
+  color: green;
+}
+
+.address .address-info .delete-address{
+  position: absolute;
+  right: 2px;
+  top: 0;
+  font-size: 30px;
+  color: red;
+  cursor: pointer;
+}
+
+.address .address-info .address-detail {
+  position: relative;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.exit-button{
+  top: 4px;
+  left: 93%;
+  font-size: 30px;
+  color: red;
+}

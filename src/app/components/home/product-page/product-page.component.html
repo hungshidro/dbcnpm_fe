@@ -1,0 +1,29 @@
+<app-regular-header></app-regular-header>
+
+<div class="small-container">
+  <div class="row row-2">
+    <h2 style="width: max-content">All Products</h2>
+    <select style="width: max-content" (change)="onSelectChange($event)">
+      <option value="default">Default Shorting</option>
+      <option value="asc">Short by price ascending</option>
+      <option value="desc">Short by price descending</option>
+    </select>
+  </div>
+    <div class="d-flex flex-wrap">
+      <div *ngFor="let product of products | paginate: {itemsPerPage: 20, currentPage: page, totalItems: totalLength }" class="col-4">
+        <app-product-item [product]="product"></app-product-item>
+      </div>
+
+    </div>
+
+<!--  <div class="page-btn">-->
+<!--    <span>1</span>-->
+<!--    <span>2</span>-->
+<!--    <span>3</span>-->
+<!--    <span>4</span>-->
+<!--    <span>&#8594;</span>-->
+<!--  </div>-->
+  <div class="d-flex justify-content-center mb-5">
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+  </div>
+</div><app-footer></app-footer>

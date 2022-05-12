@@ -1,0 +1,16 @@
+.signup-field{
+  min-width: auto;
+}
+
+.row {
+  justify-content: space-between;
+}
+
+.login-container .forms .alert-message {
+  color: red;
+  margin-top: 8px;
+  font-size: 16px
+}
+.submit-button[disabled]{
+  opacity: 0.5;
+}

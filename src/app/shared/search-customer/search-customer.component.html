@@ -1,0 +1,15 @@
+<div class="search-field">
+  <input id="product-search-bar"
+         type="text"
+         placeholder="Search for customer..."
+         name="item" #productSearch
+         (keyup)="onSearchCustomer($event)">
+  <i class='bx bx-search'></i>
+  <div class="search-data">
+    <div class="search-product"
+         *ngFor="let customer of searchCustomers"
+         (click)="onSearchCustomerClick(customer)">
+      <span>{{customer?.first_name}} {{customer?.last_name}}</span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="item">
+  <div class="buttons">
+    <span class="delete-btn" (click)="onDeleteProduct(product.product.id)"></span>
+  </div>
+  <div class="description">
+    <span class="text-black">{{product.product.name}}</span>
+
+  </div>
+
+  <div class="quantity">
+    <button class="plus-btn" type="button" name="button" (click)="addQuantity(product.product.id)">
+      <img src="https://designmodo.com/demo/shopping-cart/plus.svg" alt="" />
+    </button>
+    <input type="text" name="name" value="{{product.quantity}}">
+    <button class="minus-btn" type="button" name="button" (click)="subQuantity(product.product.id)">
+      <img src="https://designmodo.com/demo/shopping-cart/minus.svg" alt="" />
+    </button>
+  </div>
+
+  <div class="total-price">${{product.quantity * product.price}}</div>
+</div>

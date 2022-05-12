@@ -1,0 +1,95 @@
+<app-header></app-header>
+<div class="container"></div>
+<!-- Featured categories -->
+<div class="categories">
+  <div class="small-container">
+    <div class="row">
+      <div class="col-3">
+        <img src="https://i.ibb.co/sqnY1pG/category-1.jpg" alt="" />
+      </div>
+      <div class="col-3">
+        <img src="https://i.ibb.co/GCJLQRQ/category-2.jpg" alt="" />
+      </div>
+      <div class="col-3">
+        <img src="https://i.ibb.co/wYsXqP5/category-3.jpg" alt="" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Featured products -->
+<div class="small-container">
+  <h2 class="title">Featured Products</h2>
+  <div class="row">
+      <div *ngFor="let product of featuredProduct" class="col-4">
+        <app-product-item [product] = 'product'></app-product-item>
+      </div>
+  </div>
+
+  <h2 class="title">Latest Products</h2>
+  <div class="row">
+    <div *ngFor="let product of latestProduct_1" class="col-4">
+      <app-product-item [product] = 'product'></app-product-item>
+    </div>
+  </div>
+  <div class="row">
+    <div *ngFor="let product of latestProduct_2" class="col-4">
+      <app-product-item [product] = 'product'></app-product-item>
+    </div>
+  </div>
+
+</div>
+<!-- offer -->
+<div class="offer">
+  <div class="small-container">
+    <div class="row">
+      <div class="col-2">
+        <img src="https://i.ibb.co/HF5TncZ/exclusive.png" alt="" class="offer-img" />
+      </div>
+      <div class="col-2">
+        <p>Exclusively Available on RedStore</p>
+        <h1>Smart Band 4</h1>
+        <small>The Mi Smart Band 4 features a 39.9% larger (than Mi Band 3)
+          AMOLED color full-touch display with adjustable brightness, so
+          everything is clear as can be.</small>
+        <br />
+        <a href="#" class="btn">Buy Now &#8594;</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- brands -->
+<div class="brands">
+  <div class="small-container">
+    <div class="row">
+      <div class="col-5">
+        <img src="https://i.ibb.co/Gfwzz1S/logo-godrej.png" alt="" />
+      </div>
+
+      <div class="col-5">
+        <img src="https://i.ibb.co/vjrRZFM/logo-oppo.png" alt="" />
+      </div>
+
+      <div class="col-5">
+        <img src="https://i.ibb.co/3zs234S/logo-coca-cola.png" alt="" />
+      </div>
+
+      <div class="col-5">
+        <img src="https://i.ibb.co/7Wt343W/logo-paypal.png" alt="" />
+      </div>
+
+      <div class="col-5">
+        <img src="https://i.ibb.co/GVSNwJD/logo-philips.png" alt="" />
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Footer -->
+<app-footer></app-footer>
+
+<!-- js for toggle menu -->
+<script>
+
+</script>

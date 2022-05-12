@@ -1,0 +1,105 @@
+.icon-shape {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.icon-sm {
+  width: 2rem;
+  height: 2rem;
+
+}
+
+.order-item-section{
+  margin-top: 100px;
+  margin-left: 44px;
+  padding: 10px;
+  flex: 2;
+}
+
+.order-item-section .title{
+  font-size: 18px;
+  font-weight: 500;
+
+}
+
+.order-item-section table{
+  border: none;
+}
+
+.order-item-section table tbody .order-item {
+  position: relative;
+  font-size: 16px;
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid #ccc;
+  padding: 10px 0;
+  border-radius: 10px;
+  margin: 8px;
+
+}
+
+table tbody tr i{
+  position: absolute;
+  right: -50px;
+  top: 12px;
+  font-size: 36px;
+}
+
+.customer-section{
+  flex-basis: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-self: flex-start;
+  margin-top: 100px;
+  padding: 10px;
+  margin: 100px 40px 0px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px 2px rgba(0,0,0,0.1);
+  flex: 1;
+}
+
+.customer-section .title{
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.customer-section .search-cus {
+  position: relative;
+  border-bottom: 1px solid #ccc;
+  margin: 30px auto 10px;
+  width: 90%;
+}
+
+.customer-section form input{
+  margin: 0 auto;
+  border: none;
+  font-size: 12px;
+  background: #f5f5f5;
+}
+
+.customer-section form i{
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.home-section .order-button{
+  padding: 12px 20px;
+  float:right;
+  background: #0A2558;
+  margin-top: 30px;
+  margin-right: 20px;
+  border-radius: 10px;
+}
+
+.home-section .order-button a{
+  color: #fff;
+}
+
+
+

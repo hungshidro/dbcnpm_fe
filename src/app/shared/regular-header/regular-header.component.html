@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="navbar">
+    <div class="logo">
+      <a href="index.html"><img src="https://i.ibb.co/kDVwgwp/logo.png" alt="RedStore" width="125px"/></a>
+    </div>
+    <nav>
+      <ul class="my-auto">
+        <li><a href="/">Home</a></li>
+        <li><a href="/product">Products</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="/cart" class="btn-cart"><img src="https://i.ibb.co/PNjjx3y/cart.png" alt="" width="30px" height="30px"/>
+      <span *ngIf="cartNumber">{{cartNumber}}</span>
+    </a>
+  </div>
+</div>

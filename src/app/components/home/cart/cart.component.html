@@ -1,0 +1,54 @@
+<app-regular-header></app-regular-header>
+
+
+<!-- cart items details -->
+
+<div class="small-container cart-page">
+  <table>
+    <tr>
+      <th class="text-light">Product</th>
+      <th class="text-light">Quantity</th>
+      <th class="text-light">Subtotal</th>
+    </tr>
+
+    <tr  *ngFor="let item of cartItems; index as i">
+      <td>
+        <div class="cart-info">
+          <a href="/product/{{item.id}}" target="_blank"><img src="{{item.image_path}}" alt="" /></a>
+          <div>
+            <a href="/product/{{item.id}}" target="_blank"><p>{{item.name}}</p></a>
+            <small *ngIf="!item.discount_price">Price ${{item.price}}</small>
+            <small *ngIf="item.discount_price">Price <span style="text-decoration: line-through; color: #aaa; margin-right: 10px">${{item.price}}</span> ${{item.discount_price}}</small>
+            <br />
+            <a class="text-danger" (click)="onDelete(i)">Remove</a>
+          </div>
+        </div>
+      </td>
+      <td>
+        <div class="d-flex quantity">
+          <button class="plus-btn" type="button" name="button" (click)="addQuantity(i)">
+            <img src="https://designmodo.com/demo/shopping-cart/plus.svg" alt="" />
+          </button>
+          <input type="number" value="{{item.qnt}}" style="width: 60px; margin: 0 12px; text-align: center" readonly/>
+          <button class="minus-btn" type="button" name="button" (click)="subQuantity(i)">
+            <img src="https://designmodo.com/demo/shopping-cart/minus.svg" alt="" />
+          </button>
+        </div>
+      </td>
+      <td class="text-center" *ngIf="item.discount_price">${{item.discount_price * item.qnt}}</td>
+      <td class="text-center" *ngIf="!item.discount_price">${{item.price * item.qnt}}</td>
+    </tr>
+  </table>
+
+  <div class="total-price">
+    <table>
+      <tr>
+        <td>Total</td>
+        <td class="text-center">${{total}}</td>
+      </tr>
+    </table>
+  </div>
+  <div class="d-flex justify-content-end">
+    <a (click)="redirectOrder()" class="btn">Place Order &#8594;</a>
+  </div>
+</div>

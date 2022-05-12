@@ -1,0 +1,185 @@
+<app-sidebar></app-sidebar>
+<section class="home-section">
+  <nav>
+    <div class="sidebar-button" >
+      <i class='bx bx-menu sidebarBtn'></i>
+      <span class="dashboard">Customer</span>
+    </div>
+
+    <div class="profile-details">
+      <img src="../../../../../assets/images/img.png" alt="">
+      <span class="admin_name">Admin</span>
+      <i class='bx bx-chevron-down'></i>
+    </div>
+  </nav>
+  <div class="home-content">
+    <div class="d-flex mb-5">
+      <span class="title m-auto">Edit Customer Information</span>
+    </div>
+    <div class="w-50 m-auto">
+      <form [formGroup]="editCustomerForm" (ngSubmit)="onSubmit()" >
+        <div class="row justify-content-between">
+          <div class="col">
+            <label for="exampleInputUsername1" class="form-label" >First Name</label>
+            <input type="text"
+                   class="form-control"
+                   id="exampleInputUsername1"
+                   aria-describedby="emailHelp"
+                   formControlName="first_name"
+                   value="{{customer.first_name}}">
+          </div>
+          <div class="col">
+            <label for="exampleInputPassword1" class="form-label">Last Name</label>
+            <input type="text"
+                   class="form-control"
+                   id="exampleInputPassword1"
+                   formControlName="last_name"
+                   value="{{customer.last_name}}">
+          </div>
+        </div>
+        <div class="mt-3 mb-3">
+          <label for="exampleInputTel1" class="form-label">Phone Number</label>
+          <input type="text" value="{{customer.tel}}" class="form-control" id="exampleInputTel1" aria-describedby="emailHelp" formControlName="tel">
+        </div>
+        <div class="mb-3">
+          <div class="address">
+            <div class="address-info">
+              <label class="form-label">Address</label>
+              <div class="address-detail mb-3" *ngFor="let add of customer.address; index as i">
+                <span>{{add.homeNo}} {{add.street}} street, {{add.city}} city, {{add.district}} district</span>
+                <div (click)="openModal(add)" class="edit-address">
+                  <i class='bx bx-edit'></i>
+                </div>
+                <div (click)="deleteAdd(i)" class="delete-address">
+                  <i class='bx bx-x'></i>
+                </div>
+                <div id="myModal" class="modal">
+                  <div class="modal-content mt-5">
+                    <h2 class="text-center mb-5 mt-5">Edit Address</h2>
+                    <span class="close" (click)="closeModal()">&times;</span>
+                    <form [formGroup]="editAddress" (ngSubmit)="onAddressEdit(i)" >
+                      <div class="row justify-content-between mb-3">
+                        <div class="col">
+                          <label for="InputHome1" class="form-label">Home No</label>
+                          <input type="text" class="form-control"
+                                 id="InputHome1"
+                                 aria-describedby="emailHelp"
+                                 formControlName="homeNo">
+                        </div>
+                        <div class="col">
+                          <label for="InputStreet1" class="form-label">Street</label>
+                          <input type="text"
+                                 class="form-control"
+                                 id="InputStreet1"
+                                 formControlName="street">
+                        </div>
+                      </div>
+                      <div class="row justify-content-between">
+                        <div class="col">
+                          <label for="InputCity1" class="form-label">City</label>
+                          <input type="text"
+                                 class="form-control"
+                                 id="InputCity1"
+                                 aria-describedby="emailHelp"
+                                 formControlName="city">
+                        </div>
+                        <div class="col">
+                          <label for="InputDistrict1" class="form-label">District</label>
+                          <input type="text"
+                                 class="form-control"
+                                 id="InputDistrict1"
+                                 formControlName="district">
+                        </div>
+                      </div>
+
+                      <button type="submit" class="btn btn-submit">Save Changes</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div class="btn btn-square align-self-end" (click)="addAddress()">
+                <span>+</span>
+              </div>
+
+        </div>
+          </div>
+        </div>
+
+        <div class="w-90" formArrayName="addresses" >
+            <ng-container *ngFor="let addressForm of addresses.controls; let i = index">
+              <div [formGroupName]="i" class="position-relative border border-secondary rounded p-4 mb-3">
+                <div class="row justify-content-between mb-3">
+                  <div class="position-absolute exit-button" (click)="deleteAddress(i)">
+                    <i class='bx bx-x'></i>
+                  </div>
+                  <div class="col">
+                    <label for="exampleInputHome1" class="form-label">Home No</label>
+                    <input type="text" class="form-control"
+                           id="exampleInputHome1"
+                           aria-describedby="emailHelp"
+                           formControlName="homeNo">
+                  </div>
+                  <div class="col">
+                    <label for="exampleInputStreet1" class="form-label">Street</label>
+                    <input type="text"
+                           class="form-control"
+                           id="exampleInputStreet1"
+                           formControlName="street">
+                  </div>
+                </div>
+                <div class="row justify-content-between">
+                  <div class="col">
+                    <label for="exampleInputCity1" class="form-label">City</label>
+                    <input type="text"
+                           class="form-control"
+                           id="exampleInputCity1"
+                           aria-describedby="emailHelp"
+                           formControlName="city">
+                  </div>
+                  <div class="col">
+                    <label for="exampleInpuDistrict1" class="form-label">District</label>
+                    <input type="text"
+                           class="form-control"
+                           id="exampleInpuDistrict1"
+                           formControlName="district">
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+
+        <div class="mt-3 mb-3">
+          <label >Gender</label>
+        </div>
+
+        <div class="row justify-content-between">
+
+          <div class="form-check col-2 mx-3">
+            <input class="form-check-input"
+                   type="radio"
+                   id="flexRadioDefault1"
+                   value="Male"
+                   formControlName="gender">
+            <label class="form-check-label" for="flexRadioDefault1">
+              Male
+            </label>
+          </div>
+          <div class="form-check col-2">
+            <input class="form-check-input"
+                   type="radio"
+                   id="flexRadioDefault2"  formControlName="gender"
+                   value="Female">
+            <label class="form-check-label" for="flexRadioDefault2">
+              Female
+            </label>
+          </div>
+        </div>
+        <div class="mt-3 mb-3">
+          <label for="exampleInputDob" class="form-label">Date Of Birth</label>
+          <input type="date" class="form-control" id="exampleInputDob" aria-describedby="emailHelp" formControlName="dob" value="{{customer.Dob}}">
+        </div>
+        <button type="submit" class="btn btn-submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</section>

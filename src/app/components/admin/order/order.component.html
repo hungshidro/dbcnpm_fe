@@ -1,0 +1,129 @@
+<script src="../admin-login/admin-login.component.spec.ts"></script>
+<app-sidebar></app-sidebar>
+<section class="home-section">
+  <nav>
+    <div class="sidebar-button" >
+      <i class='bx bx-menu sidebarBtn'></i>
+      <span class="dashboard">Order</span>
+    </div>
+
+    <div class="profile-details">
+      <img src="assets/images/img.png" alt="">
+      <span class="admin_name">Admin</span>
+      <i class='bx bx-chevron-down'></i>
+    </div>
+  </nav>
+
+  <div class="page">
+    <div class="mb-5">abc</div>
+
+    <div class="d-flex mt-5 justify-content-end">
+      <a class="btn w-auto me-5" routerLink="/admin/order/create">Create Order</a>
+    </div>
+    <table class="layout display responsive-table mt-3 w-75 mx-auto">
+      <thead >
+        <th class="th-order id text-light">Order Id</th>
+        <th class="th-order name text-light">Customer Name</th>
+        <th class="th-order text-light">Total Price</th>
+        <th class="text-light th-order">Order Date</th>
+        <th class="text-light th-order">Payment Method</th>
+        <th class="text-light th-order">Status</th>
+        <th class="text-light th-order">Update Status</th>
+        <th class="text-light th-order">Action</th>
+
+
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orderList">
+          <td class="td-order">{{order.id}}</td>
+          <td class="td-order">{{order.first_name}} {{order.last_name}}</td>
+          <td class="td-order">${{order.total}}</td>
+          <td class="td-order">{{order.order_date}}</td>
+          <td class="td-order">{{order.payment_method}}</td>
+          <td class="td-order">{{order.status}}</td>
+          <td class="td-order">
+            <select class="mx-auto" (change)="changeOrderStatus($event, order.id)">
+              <option value="0">Status</option>
+              <option value="Pending">Pending</option>
+              <option value="Processing">Processing</option>
+              <option value="Delivered">Delivered</option>
+              <option value="Shipping">Shipping</option>
+              <option value="Completed">Completed</option>
+              <option value="Refunded">Refunded</option>
+            </select>
+          </td>
+          <td class="d-flex justify-content-between align-items-center mt-2">
+            <a class="edit-item" title="Edit" routerLink="/admin/order/edit/{{order.id}}">Edit</a>
+            <a class="show-item text-success" title="Detail" (click)="openModal(order.id)">Detail</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+</section>
+  <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content w-25">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <h2 class="text-dark mt-3 mb-5 mx-auto">Order Detail</h2>
+      <h5 class="mb-2">Customer Infomation</h5>
+      <ul class="top-sales-details">
+        <li class="d-flex justify-content-between mb-1 align-items-center">
+           <h6 class="ml-3">FullName</h6>
+          <span class="customer-info">{{orderInfo?.order?.name}}</span>
+        </li>
+        <li class="d-flex justify-content-between mb-1 align-items-center">
+            <h6 class="me-5">Address </h6>
+            <span class="customer-info">{{orderInfo?.order?.address}}</span>
+        </li>
+        <li class="d-flex justify-content-between mb-1 align-items-center">
+            <h6 class="m-0">Phone Number</h6>
+            <span class="customer-info">{{orderInfo?.order?.tel}}</span>
+        </li>
+      </ul>
+      <hr>
+      <ul class="top-sales-details" style="height: 200px; overflow: auto">
+        <li *ngFor="let item of orderInfo?.item" class="d-flex justify-content-between align-items-center mb-2 p-2">
+          <a href="#" class="d-flex flex-column ">
+            <span class="product">{{item?.product?.name}}</span>
+            <small>Quantity: {{item?.quantity}}</small>
+          </a>
+          <span class="price">${{item?.price*item?.quantity}}</span>
+        </li>
+      </ul>
+      <hr>
+      <div class="d-flex justify-content-between mb-1 align-items-center">
+        <h6 class="ship-service">Order Status</h6>
+        <span class="customer-info">{{orderInfo?.order?.status}}</span>
+      </div>
+      <hr>
+      <div class="d-flex justify-content-between mb-1 align-items-center">
+          <h6 class="ship-service">Shiping Service</h6>
+          <span class="customer-info">{{orderInfo?.order?.deli_name}}</span>
+      </div>
+      <div class="d-flex justify-content-between align-items-center">
+        <span class="ship-service">Date Shipping: </span>
+        <span class="customer-info">{{orderInfo?.order?.delivery_date}}</span>
+      </div>
+      <div class="d-flex justify-content-between  align-items-center">
+        <span class="ship-service">Date Arrived: </span>
+        <span class="customer-info">{{orderInfo?.order?.delivery_arrived}}</span>
+      </div>
+      <hr>
+      <div class="d-flex justify-content-between mb-1 align-items-center">
+          <h6 class="ship-service">Payment Method</h6>
+          <span class="customer-info">{{orderInfo?.order?.payment_method}}</span>
+      </div>
+      <hr>
+      <div class="d-flex justify-content-between mb-1 align-items-center">
+            <h6 class="product">Total</h6>
+            <span class="customer-info">${{orderInfo?.order?.total}}</span>
+
+      </div>
+    </div>
+  </div>
+
+
