@@ -35,22 +35,8 @@ export class AdminSignupComponent implements OnInit {
       first_name: null,
       last_name: null,
       email:null,
-      username: [
-        "",
-        Validators.compose([
-          Validators.required,
-          Validators.minLength(6),
-          Validators.pattern(/^[a-z]{6,32}$/i),
-        ]),
-      ],
-      password: [
-        "",
-        Validators.compose([
-          Validators.required,
-          Validators.minLength(8),
-          Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,32}$/),
-        ]),
-      ],
+      username: null,
+      password: null,
       password_confirmation: null,
     })
   }
@@ -79,7 +65,4 @@ export class AdminSignupComponent implements OnInit {
     this.router.navigateByUrl('/admin');
   }
 
-  get username(){
-    return this.signUpForm.get('username');
-  }
 }

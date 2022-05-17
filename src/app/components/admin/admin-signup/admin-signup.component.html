@@ -46,9 +46,7 @@
             <i class="uil uil-user"></i>
 
           </div>
-          <div class="alert-message" *ngif="!signUpForm.get('username').valid && (username.dirty || username.touched)">
-            Minimum six characters
-          </div>
+          
           <div class="input-field">
             <input type="password" class="password" placeholder="Create a password"  formControlName="password">
             <i class="uil uil-lock icon"></i>
